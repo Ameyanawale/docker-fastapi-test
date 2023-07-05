@@ -4,26 +4,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'start /B docker-compose up --build'
+                sh 'docker-compose up --build'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'start /B docker-compose up --build'
+                sh 'docker-compose up --build'
             }
         }
 
         stage('Deploy') {
             steps {
-                bat 'start /B docker-compose down'
-                bat 'start /B docker-compose up --build'
+                sh 'docker-compose down'
+                sh 'docker-compose up --build'
             }
         }
 
         stage('Monitoring') {
             steps {
-                bat 'start /B docker-compose -f docker-compose-monitoring.yml up --build'
+                sh 'docker-compose -f docker-compose-monitoring.yml up --build'
             }
         }
     }
